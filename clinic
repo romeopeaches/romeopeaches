@@ -1,0 +1,1469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Pre-Tryout Clinic · Romeo Peaches</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<style>
+  /* ============================================================
+     BRAND TOKENS — matched to the tryout page
+     ============================================================ */
+  .clinic-root {
+    --green-deep:  #144733;
+    --green-med:   #339C5E;
+    --green-lime:  #7BC144;
+    --coral:       #F1654F;
+    --peach:       #FD8660;
+    --cream:       #FFF1E0;
+    --cream-soft:  #FBE6D5;
+    --ink:         #0E2A1E;
+    --ink-soft:    #2A4A3B;
+    --line:        rgba(20, 71, 51, 0.14);
+    --shadow-sm:   0 1px 2px rgba(20, 71, 51, 0.06);
+    --shadow-md:   0 6px 22px rgba(20, 71, 51, 0.10);
+  }
+
+  .clinic-root *,
+  .clinic-root *::before,
+  .clinic-root *::after { box-sizing: border-box; }
+
+  /* Iframe document — narrow rules for scroll behavior only.
+     These affect the iframe document itself (not the parent Wix page)
+     and are required for smooth in-iframe scroll on iOS. */
+  html.clinic-iframe,
+  html.clinic-iframe body {
+    margin: 0;
+    padding: 0;
+    background: var(--cream);
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+  }
+
+  .clinic-root {
+    /* Layout reset for our wrapper only */
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    /* Typography */
+    font-family: 'Libre Franklin', 'Franklin Gothic Medium', 'Franklin Gothic', 'ITC Franklin Gothic', Arial, sans-serif;
+    color: var(--ink);
+    background: var(--cream);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-tap-highlight-color: rgba(241, 101, 79, 0.18);
+  }
+  .clinic-root h1, .clinic-root h2, .clinic-root h3, .clinic-root h4 {
+    font-family: 'Libre Franklin', 'Franklin Gothic', Arial, sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    line-height: 1.05;
+    margin: 0;
+    overflow-wrap: break-word;
+  }
+  .clinic-root p { margin: 0 0 1em; }
+  .clinic-root a { color: inherit; }
+  .clinic-root img, .clinic-root svg { max-width: 100%; height: auto; }
+
+  .clinic-root .wrap { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+  .clinic-root .eyebrow {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--coral);
+  }
+  .clinic-root .btn {
+    display: inline-block;
+    padding: 16px 28px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+    cursor: pointer;
+    border: none;
+  }
+  .clinic-root .btn-primary {
+    background: var(--green-deep);
+    color: var(--cream);
+    box-shadow: var(--shadow-md);
+  }
+  .clinic-root .btn-primary:hover { transform: translateY(-1px); background: var(--ink); }
+  .clinic-root .btn-coral {
+    background: var(--coral);
+    color: #fff;
+    box-shadow: var(--shadow-md);
+  }
+  .clinic-root .btn-coral:hover { transform: translateY(-1px); background: #d94e3a; }
+  .clinic-root .arrow { display: inline-block; transform: translateY(1px); margin-left: 4px; }
+
+  /* ============================================================
+     1) TIMELY BANNER
+     ============================================================ */
+  .clinic-root .banner {
+    background: var(--coral);
+    color: #fff;
+    text-align: center;
+    padding: 12px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+  .clinic-root .banner strong { font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; }
+  .clinic-root .banner a { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
+
+  /* ============================================================
+     2) HERO
+     ============================================================ */
+  .clinic-root .hero {
+    position: relative;
+    background:
+      linear-gradient(180deg, var(--green-deep) 0%, #0d3324 100%);
+    color: var(--cream);
+    padding: 88px 0 96px;
+    overflow: hidden;
+  }
+  .clinic-root .hero::after {
+    content: "";
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(900px 500px at 85% 15%, rgba(253,134,96,0.22), transparent 60%),
+      radial-gradient(800px 400px at 5% 95%, rgba(123,193,68,0.14), transparent 60%),
+      radial-gradient(600px 300px at 50% 50%, rgba(241,101,79,0.08), transparent 65%);
+    pointer-events: none;
+  }
+  }
+  .clinic-root .hero-inner { position: relative; z-index: 1; }
+  .clinic-root .hero .eyebrow { color: var(--peach); margin-bottom: 14px; }
+  .clinic-root .hero h1 {
+    font-size: clamp(40px, 6vw, 72px);
+    text-transform: uppercase;
+    max-width: 14ch;
+    margin-bottom: 20px;
+  }
+  .clinic-root .hero h1 .accent { color: var(--peach); }
+  .clinic-root .hero-sub {
+    font-size: 18px;
+    max-width: 60ch;
+    color: rgba(255, 241, 224, 0.86);
+    margin-bottom: 28px;
+  }
+  .clinic-root .hero-when {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 0;
+    margin-bottom: 32px;
+    background: rgba(253, 134, 96, 0.08);
+    border: 1px solid rgba(253, 134, 96, 0.32);
+    border-radius: 8px;
+    overflow: hidden;
+    backdrop-filter: blur(2px);
+  }
+  .clinic-root .hero-when-block {
+    padding: 22px 26px;
+    position: relative;
+  }
+  .clinic-root .hero-when-block + .hero-when-block {
+    border-left: 1px solid rgba(253, 134, 96, 0.22);
+  }
+  .clinic-root .hero-when-eyebrow {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--peach);
+    margin-bottom: 8px;
+  }
+  .clinic-root .hero-when-date-num,
+  .clinic-root .hero-when-place {
+    font-size: 26px;
+    font-weight: 800;
+    line-height: 1.1;
+    color: var(--cream);
+    margin-bottom: 4px;
+    letter-spacing: -0.01em;
+  }
+  .clinic-root .hero-when-time {
+    font-size: 14px;
+    color: rgba(255, 241, 224, 0.78);
+    font-weight: 500;
+  }
+  .clinic-root .hero-when-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 10px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--peach);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(253, 134, 96, 0.5);
+    padding-bottom: 1px;
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+  .clinic-root .hero-when-link:hover {
+    color: #fff;
+    border-bottom-color: #fff;
+  }
+  .clinic-root .hero-when-link span {
+    transition: transform 0.15s ease;
+  }
+  .clinic-root .hero-when-link:hover span {
+    transform: translateX(2px);
+  }
+
+  .clinic-root .hero-cta-row { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 36px; }
+  .clinic-root .hero-secondary {
+    background: transparent;
+    color: var(--cream);
+    border: 1.5px solid rgba(255, 241, 224, 0.5);
+    padding: 14.5px 26px;
+  }
+  .clinic-root .hero-secondary:hover { background: rgba(255, 241, 224, 0.08); }
+
+  .clinic-root .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 28px;
+    padding-top: 28px;
+    border-top: 1px solid rgba(255, 241, 224, 0.18);
+  }
+  .clinic-root .stat .num {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--peach);
+    letter-spacing: -0.02em;
+  }
+  .clinic-root .stat .lbl {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: rgba(255, 241, 224, 0.8);
+    margin-top: 4px;
+  }
+
+  /* ============================================================
+     3) INTRO / WHY
+     ============================================================ */
+  .clinic-root .why { padding: 80px 0 24px; }
+  .clinic-root .why h2 {
+    font-size: clamp(30px, 4vw, 44px);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    max-width: 18ch;
+  }
+  .clinic-root .why h2 .accent { color: var(--coral); }
+  .clinic-root .why p {
+    font-size: 17px;
+    color: var(--ink-soft);
+    max-width: 60ch;
+  }
+
+
+  /* ============================================================
+     4) WHAT WE'LL COVER
+     ============================================================ */
+  .clinic-root .curriculum { padding: 64px 0 80px; }
+  .clinic-root .curriculum-head {
+    display: flex; align-items: flex-end; justify-content: space-between;
+    flex-wrap: wrap; gap: 20px; margin-bottom: 40px;
+  }
+  .clinic-root .curriculum-head h2 {
+    font-size: clamp(28px, 4vw, 40px);
+    text-transform: uppercase;
+    max-width: 18ch;
+    margin-top: 8px;
+  }
+  .clinic-root .curriculum-head h2 .accent { color: var(--coral); }
+  .clinic-root .curriculum-head p {
+    font-size: 15px; color: var(--ink-soft); margin: 0;
+    max-width: 36ch;
+  }
+
+  .clinic-root .topic-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+  }
+  .clinic-root .topic-card {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 26px 22px 24px;
+    box-shadow: var(--shadow-sm);
+    position: relative;
+    overflow: hidden;
+  }
+  .clinic-root .topic-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+  }
+  .clinic-root .topic-card.t1::before { background: var(--green-lime); }
+  .clinic-root .topic-card.t2::before { background: var(--coral); }
+  .clinic-root .topic-card.t3::before { background: var(--green-med); }
+  .clinic-root .topic-card.t4::before { background: var(--green-deep); }
+
+  .clinic-root .topic-num {
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--coral);
+    margin-bottom: 14px;
+  }
+  .clinic-root .topic-card.t1 .topic-num { color: var(--green-med); }
+  .clinic-root .topic-card.t3 .topic-num { color: var(--green-med); }
+  .clinic-root .topic-card.t4 .topic-num { color: var(--green-med); }
+
+  .clinic-root .topic-card h3 {
+    font-size: 18px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .clinic-root .topic-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 14px;
+    color: var(--ink-soft);
+  }
+  .clinic-root .topic-card li {
+    padding: 8px 0 8px 18px;
+    position: relative;
+    border-bottom: 1px dashed var(--line);
+    line-height: 1.45;
+  }
+  .clinic-root .topic-card li:last-child { border-bottom: none; }
+  .clinic-root .topic-card li::before {
+    content: "▸";
+    position: absolute;
+    left: 0;
+    color: var(--coral);
+    font-size: 11px;
+    top: 9px;
+  }
+
+
+  /* ============================================================
+     4b) MEET YOUR COACHES — PLAYER CARDS
+     ============================================================ */
+  .clinic-root .players { padding: 80px 0 24px; }
+  .clinic-root .players-head { margin-bottom: 36px; }
+  .clinic-root .players-head h2 {
+    font-size: clamp(28px, 4vw, 40px);
+    text-transform: uppercase;
+    margin: 8px 0 14px;
+    max-width: 18ch;
+  }
+  .clinic-root .players-head h2 .accent { color: var(--coral); }
+  .clinic-root .players-head p {
+    font-size: 16px;
+    color: var(--ink-soft);
+    max-width: 60ch;
+    margin: 0;
+  }
+
+  .clinic-root .player-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+  .clinic-root .player-card {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .clinic-root .player-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+  .clinic-root .player-photo {
+    aspect-ratio: 4/5;
+    background: linear-gradient(135deg, var(--green-deep) 0%, var(--green-med) 100%);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .clinic-root .player-photo::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 30% 30%, rgba(253,134,96,0.18), transparent 50%),
+      radial-gradient(circle at 70% 80%, rgba(123,193,68,0.12), transparent 50%);
+    pointer-events: none;
+  }
+  .clinic-root .player-photo svg {
+    width: 50%;
+    height: auto;
+    color: rgba(255, 241, 224, 0.35);
+    position: relative;
+    z-index: 1;
+  }
+  .clinic-root .player-pos {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    background: var(--coral);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 5px 11px;
+    border-radius: 999px;
+    z-index: 2;
+  }
+  .clinic-root .player-photo .swap-note {
+    position: absolute;
+    bottom: 12px;
+    right: 14px;
+    font-size: 9px;
+    font-weight: 700;
+    color: rgba(255, 241, 224, 0.5);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    z-index: 2;
+  }
+  .clinic-root .player-info {
+    padding: 18px 20px 20px;
+    border-top: 3px solid transparent;
+  }
+  .clinic-root .player-card:nth-child(3n+1) .player-info { border-top-color: var(--green-lime); }
+  .clinic-root .player-card:nth-child(3n+2) .player-info { border-top-color: var(--green-med); }
+  .clinic-root .player-card:nth-child(3n+3) .player-info { border-top-color: var(--coral); }
+
+  .clinic-root .player-name {
+    font-size: 17px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -0.005em;
+    margin-bottom: 6px;
+    color: var(--ink);
+  }
+  .clinic-root .player-college {
+    font-size: 13px;
+    color: var(--ink-soft);
+    font-weight: 600;
+  }
+  .clinic-root .player-college .year {
+    color: var(--coral);
+    font-weight: 700;
+  }
+
+  /* ============================================================
+     5) PITCHING / CATCHING CALLOUT
+     ============================================================ */
+  .clinic-root .pcc {
+    background: var(--green-lime);
+    color: var(--green-deep);
+    padding: 56px 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .clinic-root .pcc-inner { position: relative; z-index: 1; max-width: 700px; }
+  .clinic-root .pcc .pcc-tag {
+    display: inline-block;
+    background: var(--green-deep);
+    color: var(--cream);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    border-radius: 999px;
+    margin-bottom: 16px;
+  }
+  .clinic-root .pcc h2 {
+    font-size: clamp(28px, 4vw, 40px);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    max-width: 18ch;
+  }
+  .clinic-root .pcc p {
+    font-size: 16px;
+    color: var(--ink);
+    max-width: 60ch;
+  }
+
+  /* ============================================================
+     6) WHAT'S INCLUDED
+     ============================================================ */
+  .clinic-root .included { padding: 80px 0; background: var(--cream-soft); }
+  .clinic-root .included h2 {
+    font-size: clamp(28px, 4vw, 40px);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .clinic-root .included .sub { color: var(--ink-soft); margin-bottom: 36px; font-size: 15px; }
+  .clinic-root .inc-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .clinic-root .inc-card {
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 24px 22px;
+  }
+  .clinic-root .inc-card .inc-num {
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--coral);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .clinic-root .inc-card h4 {
+    font-size: 16px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .clinic-root .inc-card p { font-size: 13.5px; color: var(--ink-soft); margin: 0; line-height: 1.5; }
+
+  /* ============================================================
+     7) SCHEDULE / DATES
+     ============================================================ */
+  .clinic-root .schedule { padding: 80px 0; }
+  .clinic-root .schedule-head { margin-bottom: 32px; }
+  .clinic-root .schedule h2 {
+    font-size: clamp(28px, 4vw, 40px);
+    text-transform: uppercase;
+  }
+  .clinic-root .session-single {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: var(--green-deep);
+    color: var(--cream);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .clinic-root .session-block {
+    padding: 36px 36px;
+    position: relative;
+  }
+  .clinic-root .session-block + .session-block {
+    border-left: 1px solid rgba(255, 241, 224, 0.16);
+  }
+  .clinic-root .session-eyebrow {
+    font-size: 10px; font-weight: 800;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--peach);
+    margin-bottom: 10px;
+  }
+  .clinic-root .session-date, .clinic-root .session-place {
+    font-size: 28px;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 6px;
+  }
+  .clinic-root .session-time {
+    font-size: 15px;
+    color: rgba(255,241,224,0.78);
+  }
+  .clinic-root .session-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 14px;
+    padding: 8px 14px;
+    border-radius: 4px;
+    background: rgba(253, 134, 96, 0.16);
+    color: var(--peach);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid rgba(253, 134, 96, 0.32);
+    transition: background 0.15s ease, transform 0.15s ease;
+  }
+  .clinic-root .session-link:hover {
+    background: rgba(253, 134, 96, 0.28);
+    transform: translateY(-1px);
+  }
+  .clinic-root .session-link span {
+    transition: transform 0.15s ease;
+  }
+  .clinic-root .session-link:hover span {
+    transform: translateX(2px);
+  }
+
+  /* ============================================================
+     8) WHAT TO WEAR & BRING
+     ============================================================ */
+  .clinic-root .bring { padding: 60px 0 80px; background: var(--cream-soft); }
+  .clinic-root .bring h2 {
+    font-size: clamp(26px, 3.5vw, 36px);
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+  .clinic-root .wear-bring-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+  }
+  .clinic-root .wb-col h3 {
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--coral);
+    margin-bottom: 14px;
+  }
+  .clinic-root .wb-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 15.5px;
+    color: var(--ink);
+  }
+  .clinic-root .wb-col li {
+    padding: 10px 0 10px 24px;
+    position: relative;
+    border-bottom: 1px solid var(--line);
+  }
+  .clinic-root .wb-col li:last-child { border-bottom: none; }
+  .clinic-root .wb-col li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    top: 10px;
+    color: var(--green-med);
+    font-weight: 800;
+  }
+  .clinic-root .wb-col li.must {
+    font-weight: 700;
+  }
+  .clinic-root .wb-col li.must::before {
+    content: "★";
+    color: var(--coral);
+  }
+  .clinic-root .wb-col li.note {
+    color: var(--ink-soft);
+    font-style: italic;
+    font-size: 14px;
+  }
+  .clinic-root .wb-col li.note::before {
+    content: "→";
+    color: var(--coral);
+    top: 9px;
+  }
+  .clinic-root .bring-col h4 {
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--coral);
+    margin-bottom: 12px;
+  }
+  .clinic-root .bring-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 15px;
+    color: var(--ink);
+  }
+  .clinic-root .bring-col li {
+    padding: 8px 0 8px 22px;
+    position: relative;
+    border-bottom: 1px solid var(--line);
+  }
+  .clinic-root .bring-col li::before {
+    content: "✓";
+    position: absolute; left: 0;
+    color: var(--green-med);
+    font-weight: 800;
+  }
+  .clinic-root .bring-col.skip li::before { content: "✕"; color: var(--coral); }
+
+  /* ============================================================
+     9) FAQ
+     ============================================================ */
+  .clinic-root .faqs { padding: 80px 0; }
+  .clinic-root .faqs h2 {
+    font-size: clamp(28px, 4vw, 40px);
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+  .clinic-root .faq {
+    border-top: 1px solid var(--line);
+    padding: 0;
+  }
+  .clinic-root .faq:last-of-type { border-bottom: 1px solid var(--line); }
+  .clinic-root .faq summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 22px 0;
+    font-size: 17px;
+    font-weight: 700;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+  }
+  .clinic-root .faq summary::-webkit-details-marker { display: none; }
+  .clinic-root .faq .icon {
+    font-size: 24px;
+    font-weight: 400;
+    color: var(--coral);
+    transition: transform 0.2s ease;
+  }
+  .clinic-root .faq[open] .icon { transform: rotate(45deg); }
+  .clinic-root .faq-body {
+    padding: 0 0 22px;
+    color: var(--ink-soft);
+    font-size: 15.5px;
+    max-width: 70ch;
+  }
+
+  /* ============================================================
+     10) CLOSING CTA
+     ============================================================ */
+  .clinic-root .closing {
+    position: relative;
+    background:
+      radial-gradient(700px 400px at 50% 0%, #1a5a40, var(--green-deep) 60%);
+    color: var(--cream);
+    text-align: center;
+    padding: 96px 0 100px;
+    overflow: hidden;
+  }
+  .clinic-root .closing::before {
+    content: "";
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(500px 300px at 80% 100%, rgba(253,134,96,0.16), transparent 65%),
+      radial-gradient(400px 250px at 15% 80%, rgba(123,193,68,0.10), transparent 65%);
+    pointer-events: none;
+  }
+  .clinic-root .closing > * { position: relative; z-index: 1; }
+  .clinic-root .closing-eyebrow {
+    font-size: 11px; font-weight: 800;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--peach);
+    margin-bottom: 14px;
+  }
+  .clinic-root .closing h2 {
+    font-size: clamp(40px, 6vw, 64px);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .clinic-root .closing h2 .accent { color: var(--peach); }
+  .clinic-root .closing p {
+    font-size: 17px;
+    max-width: 50ch;
+    margin: 0 auto 28px;
+    color: rgba(255,241,224,0.85);
+  }
+  .clinic-root .closing-arrow {
+    font-size: 56px;
+    line-height: 1;
+    color: var(--peach);
+    margin: 12px 0 22px;
+    font-weight: 300;
+    animation: clinic-bounce 1.6s ease-in-out infinite;
+  }
+  .clinic-root .hero-register {
+    cursor: default;
+    user-select: none;
+  }
+  .clinic-root .hero-register .arrow {
+    display: inline-block;
+    animation: clinic-bounce 1.6s ease-in-out infinite;
+  }
+  .clinic-root .hero-register:hover {
+    transform: none;
+    background: var(--coral);
+  }
+  @keyframes clinic-bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(8px); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .clinic-root .closing-arrow { animation: none; }
+  }
+  .clinic-root .closing .small {
+    margin-top: 22px;
+    font-size: 13px;
+    color: rgba(255,241,224,0.65);
+  }
+  .clinic-root .closing .small a { color: var(--peach); text-decoration: none; border-bottom: 1px solid var(--peach); }
+
+  /* ============================================================
+     RESPONSIVE — mobile-first, 85%+ of traffic
+     ============================================================ */
+
+  /* Tablet & below (≤ 860px) ─────────────────────────────────── */
+  @media (max-width: 860px) {
+    .clinic-root .wrap { padding: 0 20px; }
+
+    /* Banner */
+    .clinic-root .banner { font-size: 12px; padding: 11px 14px; line-height: 1.4; }
+
+    /* Hero */
+    .clinic-root .hero { padding: 56px 0 64px; }
+    .clinic-root .hero h1 { font-size: 44px; max-width: none; }
+    .clinic-root .hero-sub { font-size: 16px; }
+    .clinic-root .hero-cta-row { flex-direction: column; gap: 10px; }
+    .clinic-root .hero-when { grid-template-columns: 1fr; margin-bottom: 24px; }
+    .clinic-root .hero-when-block + .hero-when-block {
+      border-left: none;
+      border-top: 1px solid rgba(253, 134, 96, 0.22);
+    }
+    .clinic-root .hero-when-block { padding: 18px 22px; }
+    .clinic-root .hero-when-date-num,
+    .clinic-root .hero-when-place { font-size: 22px; }
+    .clinic-root .hero-cta-row .btn { width: 100%; text-align: center; }
+    .clinic-root .hero-stats { grid-template-columns: repeat(2, 1fr); gap: 20px 16px; }
+    .clinic-root .stat .num { font-size: 22px; }
+    .clinic-root .stat .lbl { font-size: 10px; }
+
+    /* Why */
+    .clinic-root .why { padding: 56px 0 16px; }
+    .clinic-root .why h2 { font-size: 30px; }
+    .clinic-root .why p { font-size: 16px; }
+
+    /* Curriculum */
+    .clinic-root .curriculum { padding: 44px 0 56px; }
+    .clinic-root .curriculum-head { flex-direction: column; align-items: flex-start; gap: 10px; margin-bottom: 28px; }
+    .clinic-root .curriculum-head h2 { font-size: 28px; }
+    .clinic-root .topic-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .clinic-root .topic-card { padding: 22px 20px 20px; }
+
+    /* Players */
+    .clinic-root .players { padding: 56px 0 16px; }
+    .clinic-root .players-head h2 { font-size: 28px; }
+    .clinic-root .player-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    .clinic-root .player-info { padding: 14px 16px 16px; }
+    .clinic-root .player-name { font-size: 14.5px; }
+    .clinic-root .player-college { font-size: 12px; }
+    .clinic-root .player-pos { font-size: 9px; padding: 4px 9px; top: 10px; left: 10px; }
+    .clinic-root .swap-note { display: none; }
+
+    /* Pitching & catching */
+    .clinic-root .pcc { padding: 44px 0; }
+    .clinic-root .pcc h2 { font-size: 26px; }
+    .clinic-root .pcc p { font-size: 15px; }
+
+    /* Included */
+    .clinic-root .included { padding: 56px 0; }
+    .clinic-root .included h2 { font-size: 28px; }
+    .clinic-root .inc-grid { grid-template-columns: 1fr; gap: 12px; }
+    .clinic-root .inc-card { padding: 22px 20px; }
+
+    /* Schedule */
+    .clinic-root .schedule { padding: 56px 0; }
+    .clinic-root .schedule h2 { font-size: 26px; }
+    .clinic-root .session-single { grid-template-columns: 1fr; }
+    .clinic-root .session-block + .session-block { border-left: none; border-top: 1px solid rgba(255, 241, 224, 0.16); }
+    .clinic-root .session-date { font-size: 24px; }
+
+    /* Bring */
+    .clinic-root .bring { padding: 48px 0 56px; }
+    .clinic-root .bring h2 { font-size: 26px; }
+    .clinic-root .wear-bring-grid { grid-template-columns: 1fr; gap: 24px; }
+
+    /* FAQ */
+    .clinic-root .faqs { padding: 56px 0; }
+    .clinic-root .faqs h2 { font-size: 28px; }
+    .clinic-root .faq summary {
+      font-size: 15.5px;
+      padding: 18px 0;
+      gap: 16px;
+      min-height: 56px;
+    }
+    .clinic-root .faq .icon { font-size: 22px; flex-shrink: 0; }
+    .clinic-root .faq-body { font-size: 14.5px; padding-bottom: 18px; }
+
+    /* Closing */
+    .clinic-root .closing { padding: 64px 0 72px; }
+    .clinic-root .closing h2 { font-size: 44px; }
+    .clinic-root .closing p { font-size: 16px; }
+    .clinic-root .closing .btn { width: 100%; max-width: 320px; }
+
+    /* Buttons — bigger tap targets */
+    .clinic-root .btn { padding: 17px 24px; font-size: 13px; }
+  }
+
+  /* Phone (≤ 540px) ─────────────────────────────────────────── */
+  @media (max-width: 540px) {
+    .clinic-root .wrap { padding: 0 18px; }
+
+    .clinic-root .banner { font-size: 11.5px; }
+    .clinic-root .banner strong { display: inline-block; }
+
+    .clinic-root .hero { padding: 48px 0 56px; }
+    .clinic-root .hero h1 { font-size: 36px; line-height: 1.08; }
+    .clinic-root .hero-sub { font-size: 15.5px; line-height: 1.55; }
+    .clinic-root .hero-stats { gap: 16px 14px; padding-top: 22px; }
+
+    .clinic-root .why h2, .clinic-root .curriculum-head h2, .clinic-root .players-head h2, .clinic-root .pcc h2, .clinic-root .included h2, .clinic-root .schedule h2, .clinic-root .bring h2, .clinic-root .faqs h2 { font-size: 26px; }
+
+    .clinic-root .topic-grid { grid-template-columns: 1fr; gap: 10px; }
+    .clinic-root .topic-card { padding: 22px 20px; }
+    .clinic-root .topic-card h3 { font-size: 17px; }
+
+    .clinic-root .closing h2 { font-size: 38px; }
+  }
+
+  /* Small phone (≤ 380px) ───────────────────────────────────── */
+  @media (max-width: 380px) {
+    .clinic-root .wrap { padding: 0 16px; }
+
+    .clinic-root .hero h1 { font-size: 32px; }
+    .clinic-root .hero-stats { grid-template-columns: 1fr; gap: 12px; }
+
+    .clinic-root .player-grid { grid-template-columns: 1fr; gap: 12px; }
+    .clinic-root .player-photo { aspect-ratio: 16/10; }
+
+    .clinic-root .closing h2 { font-size: 32px; }
+
+    .clinic-root .why h2, .clinic-root .curriculum-head h2, .clinic-root .players-head h2, .clinic-root .pcc h2, .clinic-root .included h2, .clinic-root .schedule h2, .clinic-root .bring h2, .clinic-root .faqs h2 { font-size: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="clinic-root">
+
+
+<!-- ============================================================
+     1) TIMELY BANNER
+     ============================================================ -->
+<div class="banner">
+  <strong>Pre-tryout clinic</strong> &nbsp;·&nbsp; Now open for ages 9–13. 30 spots only.
+</div>
+
+<!-- ============================================================
+     2) HERO
+     ============================================================ -->
+<section class="hero">
+  <div class="wrap hero-inner">
+    <div class="eyebrow">Romeo Peaches · Pre-tryout clinic · Ages 9–13</div>
+    <h1>Walk into tryouts <span class="accent">ready.</span> Not nervous.</h1>
+    <p class="hero-sub">The Romeo Peaches Pre-Tryout Clinic is a three-hour session for players ages 9 through 13, built to get your daughter sharp, confident, and tryout-ready. Real coaching from current and former college players, with every player working through every station — defense, hitting, base running, and tryout-pressure reps.</p>
+
+    <div class="hero-when">
+      <div class="hero-when-block hero-when-date">
+        <div class="hero-when-eyebrow">Clinic day</div>
+        <div class="hero-when-date-num">Sat, June 6</div>
+        <div class="hero-when-time">10:00 AM – 1:00 PM</div>
+      </div>
+      <div class="hero-when-block hero-when-loc">
+        <div class="hero-when-eyebrow">Where</div>
+        <div class="hero-when-place">Ray Park</div>
+        <div class="hero-when-time">Ray Township, MI</div>
+        <a class="hero-when-link" href="https://www.google.com/maps/dir/?api=1&destination=Ray+Park+Ray+Township+MI" target="_blank" rel="noopener">
+          Get directions <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-cta-row">
+      <div class="btn btn-coral hero-register" aria-hidden="true">Register Below <span class="arrow">↓</span></div>
+      <a class="btn hero-secondary" href="#curriculum">See what we cover</a>
+    </div>
+
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="num">T-Shirt</div>
+        <div class="lbl">Included for every player</div>
+      </div>
+      <div class="stat">
+        <div class="num">Ages 9–13</div>
+        <div class="lbl">Every player works every station</div>
+      </div>
+      <div class="stat">
+        <div class="num">30 Spots</div>
+        <div class="lbl">First-come, first-served</div>
+      </div>
+      <div class="stat">
+        <div class="num">College</div>
+        <div class="lbl">Players on every station</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     3) WHY THIS CLINIC
+     ============================================================ -->
+<section class="why">
+  <div class="wrap">
+    <div class="eyebrow">The point</div>
+    <h2>Tryouts go better when she knows what's <span class="accent">coming.</span></h2>
+    <p>Most kids don't underperform at tryouts because they're not good enough. They underperform because it's the first time all season they've seen real reps under pressure with a stopwatch on them. This clinic flips that. Half a day of focused work — fielding, hitting, throwing, and pitching/catching — taught by people who aren't her parent and aren't her future coach. So when she shows up to tryouts in July, the format isn't new, the speed isn't new, and the nerves aren't loud.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     4) WHAT WE'LL COVER
+     ============================================================ -->
+<section class="curriculum" id="curriculum">
+  <div class="wrap">
+    <div class="curriculum-head">
+      <div>
+        <div class="eyebrow">What we'll cover</div>
+        <h2>The full <span class="accent">softball toolkit.</span></h2>
+      </div>
+      <p>Every player works through every station. The complete clinic — defense, hitting, base running, and tryout prep — taught at a pace that meets her where she is.</p>
+    </div>
+
+    <div class="topic-grid">
+
+      <!-- 1: Defense -->
+      <div class="topic-card t1">
+        <div class="topic-num">01 · Station</div>
+        <h3>Defense</h3>
+        <ul>
+          <li>Throwing mechanics & footwork</li>
+          <li>Glove fundamentals — ground & fly</li>
+          <li>Position-specific defensive work</li>
+        </ul>
+      </div>
+
+      <!-- 2: Hitting -->
+      <div class="topic-card t2">
+        <div class="topic-num">02 · Station</div>
+        <h3>Hitting</h3>
+        <ul>
+          <li>Tee work & front toss</li>
+          <li>Live batting practice</li>
+          <li>Situational hitting</li>
+        </ul>
+      </div>
+
+      <!-- 3: Base Running -->
+      <div class="topic-card t3">
+        <div class="topic-num">03 · Station</div>
+        <h3>Base running</h3>
+        <ul>
+          <li>Reads & secondaries</li>
+          <li>Game-speed decisions</li>
+          <li>Pressure scenarios</li>
+        </ul>
+      </div>
+
+      <!-- 4: Tryout Prep -->
+      <div class="topic-card t4">
+        <div class="topic-num">04 · Station</div>
+        <h3>Tryout prep</h3>
+        <ul>
+          <li>What tryouts actually look like</li>
+          <li>Pressure-rep simulation</li>
+          <li>Coach-led evaluation drills</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     4b) MEET YOUR COACHES
+     ============================================================ -->
+<section class="players">
+  <div class="wrap">
+    <div class="players-head">
+      <div class="eyebrow">Meet your clinic coaches</div>
+      <h2>Real players. <span class="accent">Real reps.</span></h2>
+      <p>Current and former college players who came up through travel ball just like she did. They know what tryouts feel like — and they know how to teach it.</p>
+    </div>
+
+    <div class="player-grid">
+
+      <!-- Card 1 -->
+      <div class="player-card">
+        <div class="player-photo">
+          <span class="player-pos">Pitcher</span>
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" fill="none">
+            <circle cx="50" cy="50" r="42" stroke="currentColor" stroke-width="2.5"/>
+            <path d="M14,52 Q50,18 86,52" stroke="currentColor" stroke-width="2" stroke-dasharray="4 3" stroke-linecap="round"/>
+            <path d="M14,52 Q50,86 86,52" stroke="currentColor" stroke-width="2" stroke-dasharray="4 3" stroke-linecap="round"/>
+          </svg>
+          <span class="swap-note">Photo · swap me</span>
+        </div>
+        <div class="player-info">
+          <div class="player-name">[ Player Name ]</div>
+          <div class="player-college">[ College Name ] &nbsp;·&nbsp; <span class="year">'27</span></div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="player-card">
+        <div class="player-photo">
+          <span class="player-pos">Catcher</span>
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" fill="none">
+            <circle cx="50" cy="50" r="42" stroke="currentColor" stroke-width="2.5"/>
+            <path d="M14,52 Q50,18 86,52" stroke="currentColor" stroke-width="2" stroke-dasharray="4 3" stroke-linecap="round"/>
+            <path d="M14,52 Q50,86 86,52" stroke="currentColor" stroke-width="2" stroke-dasharray="4 3" stroke-linecap="round"/>
+          </svg>
+          <span class="swap-note">Photo · swap me</span>
+        </div>
+        <div class="player-info">
+          <div class="player-name">[ Player Name ]</div>
+          <div class="player-college">[ College Name ] &nbsp;·&nbsp; <span class="year">'26</span></div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="player-card">
+        <div class="player-photo">
+          <span class="player-pos">Shortstop</span>
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" fill="none">
+            <circle cx="50" cy="50" r="42" stroke="currentColor" stroke-width="2.5"/>
+            <path d="M14,52 Q50,18 86,52" stroke="currentColor" stroke-width="2" stroke-dasharray="4 3" stroke-linecap="round"/>
+            <path d="M14,52 Q50,86 86,52" stroke="currentColor" stroke-width="2" stroke-dasharray="4 3" stroke-linecap="round"/>
+          </svg>
+          <span class="swap-note">Photo · swap me</span>
+        </div>
+        <div class="player-info">
+          <div class="player-name">[ Player Name ]</div>
+          <div class="player-college">[ College Name ] &nbsp;·&nbsp; <span class="year">'27</span></div>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="player-card">
+        <div class="player-photo">
+          <span class="player-pos">Outfield</span>
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" fill="none">
+            <circle cx="50" cy="50" r="42" stroke="currentColor" stroke-width="2.5"/>
+            <path d="M14,52 Q50,18 86,52" stroke="currentColor" stroke-width="2" stroke-dasharray="4 3" stroke-linecap="round"/>
+            <path d="M14,52 Q50,86 86,52" stroke="currentColor" stroke-width="2" stroke-dasharray="4 3" stroke-linecap="round"/>
+          </svg>
+          <span class="swap-note">Photo · swap me</span>
+        </div>
+        <div class="player-info">
+          <div class="player-name">[ Player Name ]</div>
+          <div class="player-college">[ College Name ] &nbsp;·&nbsp; <span class="year">'25</span></div>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="player-card">
+        <div class="player-photo">
+          <span class="player-pos">First Base</span>
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" fill="none">
+            <circle cx="50" cy="50" r="42" stroke="currentColor" stroke-width="2.5"/>
+            <path d="M14,52 Q50,18 86,52" stroke="currentColor" stroke-width="2" stroke-dasharray="4 3" stroke-linecap="round"/>
+            <path d="M14,52 Q50,86 86,52" stroke="currentColor" stroke-width="2" stroke-dasharray="4 3" stroke-linecap="round"/>
+          </svg>
+          <span class="swap-note">Photo · swap me</span>
+        </div>
+        <div class="player-info">
+          <div class="player-name">[ Player Name ]</div>
+          <div class="player-college">[ College Name ] &nbsp;·&nbsp; <span class="year">'26</span></div>
+        </div>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="player-card">
+        <div class="player-photo">
+          <span class="player-pos">Pitcher</span>
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" fill="none">
+            <circle cx="50" cy="50" r="42" stroke="currentColor" stroke-width="2.5"/>
+            <path d="M14,52 Q50,18 86,52" stroke="currentColor" stroke-width="2" stroke-dasharray="4 3" stroke-linecap="round"/>
+            <path d="M14,52 Q50,86 86,52" stroke="currentColor" stroke-width="2" stroke-dasharray="4 3" stroke-linecap="round"/>
+          </svg>
+          <span class="swap-note">Photo · swap me</span>
+        </div>
+        <div class="player-info">
+          <div class="player-name">[ Player Name ]</div>
+          <div class="player-college">[ College Name ] &nbsp;·&nbsp; <span class="year">'25</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     5) PITCHING & CATCHING CALLOUT
+     ============================================================ -->
+<section class="pcc">
+  <div class="wrap pcc-inner">
+    <div class="pcc-tag">Pitchers & catchers</div>
+    <h2>Mini sessions for pitchers &amp; catchers.</h2>
+    <p>If your daughter is a pitcher or catcher, we'll have a mini session just for them — bullpen work, mechanics, and framing reps with a dedicated coach. Note her position on the registration form and she'll get pulled for position-specific work without missing the rest of the clinic.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     6) WHAT'S INCLUDED
+     ============================================================ -->
+<section class="included">
+  <div class="wrap">
+    <div class="eyebrow">What's included</div>
+    <h2>Everything she needs. Nothing she doesn't.</h2>
+    <p class="sub">No upsells, no add-ons, no premium tier. She walks out with a t-shirt and the kind of reps tryouts demand.</p>
+
+    <div class="inc-grid">
+      <div class="inc-card">
+        <div class="inc-num">01</div>
+        <h4>College players</h4>
+        <p>Current and former college players running every station — instruction from athletes who've been where she's headed.</p>
+      </div>
+      <div class="inc-card">
+        <div class="inc-num">02</div>
+        <h4>Pitching coach</h4>
+        <p>Mini sessions for pitchers and catchers with a dedicated coach — bullpen work, mechanics, and framing reps.</p>
+      </div>
+      <div class="inc-card">
+        <div class="inc-num">03</div>
+        <h4>Clinic t-shirt</h4>
+        <p>Each player gets a clinic t-shirt at check-in.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     7) SCHEDULE / DATES
+     ============================================================ -->
+<section class="schedule">
+  <div class="wrap">
+    <div class="schedule-head">
+      <div class="eyebrow">When & where</div>
+      <h2>Save the date.</h2>
+    </div>
+
+    <div class="session-single">
+      <div class="session-block">
+        <div class="session-eyebrow">Clinic day</div>
+        <div class="session-date">Saturday, June 6</div>
+        <div class="session-time">10:00 AM – 1:00 PM</div>
+      </div>
+      <div class="session-block">
+        <div class="session-eyebrow">Location</div>
+        <div class="session-place">Ray Park</div>
+        <div class="session-time">Ray Township, Michigan</div>
+        <a class="session-link" href="https://www.google.com/maps/dir/?api=1&destination=Ray+Park+Ray+Township+MI" target="_blank" rel="noopener">
+          Get directions <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     8) WHAT TO BRING
+     ============================================================ -->
+<section class="bring">
+  <div class="wrap">
+    <h2>What to wear &amp; bring.</h2>
+    <div class="wear-bring-grid">
+
+      <div class="wb-col">
+        <h3>What to wear</h3>
+        <ul>
+          <li class="must">Softball pants — required</li>
+          <li class="must">Cleats — required</li>
+          <li>Athletic socks</li>
+          <li class="note">Clinic t-shirt provided at check-in</li>
+        </ul>
+      </div>
+
+      <div class="wb-col">
+        <h3>What to bring</h3>
+        <ul>
+          <li>Glove, bat, helmet</li>
+          <li>Catcher's gear (if applicable)</li>
+          <li>Water bottle &amp; sunscreen</li>
+          <li>A snack — we run through lunch</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     9) FAQ
+     ============================================================ -->
+<section class="faqs">
+  <div class="wrap">
+    <div class="eyebrow">Common questions</div>
+    <h2>Things parents ask first.</h2>
+
+    <details class="faq">
+      <summary>Is the clinic only for kids trying out for the Peaches?<span class="icon">+</span></summary>
+      <div class="faq-body">
+        <p>Nope. It's open to anyone — Peaches families, non-Peaches families, kids trying out for any travel organization, kids just sharpening up for next season. The work is the work. If she plays softball, she'll get something out of it.</p>
+      </div>
+    </details>
+
+    <details class="faq">
+      <summary>What if my daughter is more advanced (or less) than the others?<span class="icon">+</span></summary>
+      <div class="faq-body">
+        <p>Good coaches teach to the player in front of them, not the average. Our college players are used to running stations where every kid is at a different point — they'll meet her where she is. The drills scale up or down naturally, and the work is the same whether she's in her first travel season or her fifth.</p>
+      </div>
+    </details>
+
+    <details class="faq">
+      <summary>Will the coaches at this clinic be evaluating for tryouts?<span class="icon">+</span></summary>
+      <div class="faq-body">
+        <p>No. A few Peaches coaches will be on site to support, but they aren't running evaluations and they aren't taking notes. Every player wears the same unnumbered clinic t-shirt — no numbers, no rankings, no rosters going into July. She can take risks, mess up, ask questions, and try things that don't quite work without any of it counting against her at tryouts.</p>
+      </div>
+    </details>
+
+    <details class="faq">
+      <summary>What if it rains?<span class="icon">+</span></summary>
+      <div class="faq-body">
+        <p>Light rain, we play through it — softball doesn't stop for sprinkles. Heavy weather, we'll reschedule.</p>
+      </div>
+    </details>
+
+    <details class="faq">
+      <summary>Refund policy?<span class="icon">+</span></summary>
+      <div class="faq-body">
+        <p>No refunds. Registration covers coaches, field time, and your daughter's t-shirt — all of which are locked in once she signs up. If something comes up, reach out and we'll do our best to credit you toward a future Peaches clinic, but we can't refund the registration.</p>
+      </div>
+    </details>
+
+    <details class="faq">
+      <summary>Does this guarantee her a spot at tryouts or on the team?<span class="icon">+</span></summary>
+      <div class="faq-body">
+        <p>It does not. Tryouts are tryouts. What this clinic does is make sure she's not seeing the format, the speed, or the nerves for the first time on tryout day. That's a real edge — but it's not a guarantee, and we'd never sell it as one.</p>
+      </div>
+    </details>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     10) CLOSING CTA
+     ============================================================ -->
+<section class="closing" id="register">
+  <div class="wrap">
+    <div class="closing-eyebrow">Only 30 spots</div>
+    <h2>Get her <span class="accent">ready.</span></h2>
+    <p>One clinic. Three hours. Registration is right below — takes about a minute.</p>
+    <div class="closing-arrow" aria-hidden="true">↓</div>
+    <div class="small">
+      Questions first? <a href="https://www.romeopeaches.com/contact" target="_top">Send us a note →</a>
+    </div>
+  </div>
+</section>
+
+
+</div><!-- /.clinic-root -->
+
+<script>
+(function () {
+  'use strict';
+
+  // Mark this document so iframe-only CSS activates.
+  document.documentElement.classList.add('clinic-iframe');
+
+  // ──────────────────────────────────────────────────────────
+  // Height reporting — tells the parent (Wix) how tall we are
+  // so it can resize the iframe and avoid inner scrollbars.
+  // We send messages in a few formats to maximize compatibility
+  // with Wix's various embed widgets and other common hosts.
+  // ──────────────────────────────────────────────────────────
+
+  function getDocHeight() {
+    var doc = document.documentElement;
+    var body = document.body;
+    return Math.max(
+      body.scrollHeight, body.offsetHeight,
+      doc.scrollHeight, doc.offsetHeight, doc.clientHeight
+    );
+  }
+
+  var lastHeight = 0;
+
+  function reportHeight() {
+    try {
+      var h = getDocHeight();
+      // Avoid spamming identical values
+      if (h === lastHeight) return;
+      lastHeight = h;
+
+      // Most-common postMessage formats. Parents that don't
+      // recognize them simply ignore the message — no harm.
+      window.parent.postMessage({ type: 'resize', height: h }, '*');
+      window.parent.postMessage({ height: h }, '*');
+      window.parent.postMessage('clinic-height:' + h, '*');
+    } catch (e) {
+      // Cross-origin or parent unavailable — silently ignore.
+    }
+  }
+
+  // Initial reports — multiple times because fonts and images
+  // can change layout after first paint.
+  reportHeight();
+  window.addEventListener('load', reportHeight);
+  setTimeout(reportHeight, 250);
+  setTimeout(reportHeight, 1000);
+  setTimeout(reportHeight, 2500);
+
+  // Re-report whenever content size changes (FAQ accordion
+  // expanding, viewport rotating, fonts loading late).
+  if (typeof ResizeObserver !== 'undefined') {
+    try {
+      var ro = new ResizeObserver(reportHeight);
+      ro.observe(document.body);
+    } catch (e) { /* graceful fallback */ }
+  }
+
+  window.addEventListener('resize', reportHeight);
+
+  // FAQ <details> elements change height when toggled.
+  document.querySelectorAll('details.faq').forEach(function (el) {
+    el.addEventListener('toggle', function () {
+      // Allow the open/close animation a moment, then report.
+      setTimeout(reportHeight, 50);
+      setTimeout(reportHeight, 350);
+    });
+  });
+
+  // ──────────────────────────────────────────────────────────
+  // Smooth in-iframe anchor scrolling — works even when the
+  // browser ignores CSS scroll-behavior inside iframes.
+  // ──────────────────────────────────────────────────────────
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var id = link.getAttribute('href').slice(1);
+      if (!id) return;
+      var target = document.getElementById(id);
+      if (!target) return;
+      e.preventDefault();
+      var top = target.getBoundingClientRect().top + window.pageYOffset - 8;
+      try {
+        window.scrollTo({ top: top, behavior: 'smooth' });
+      } catch (err) {
+        window.scrollTo(0, top);
+      }
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
